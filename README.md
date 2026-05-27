@@ -1,119 +1,140 @@
-# SDB-MZ (Sistema de Denúncia de Burlas de Moçambique)
+# SDB-MZ — Sistema de Denúncia de Burlas de Moçambique
 
-O **SDB-MZ** é uma plataforma web integral de triagem e denúncia anónima de fraudes, burlas eletrónicas e esquemas digitais (como burlas de M-Pesa, E-Mola, roubos de contas em redes sociais e páginas falsas de investimentos) adaptado ao contexto de Moçambique.
+> **"Denuncie. Proteja. Moçambique."**
 
-Este projeto foi projetado com especial atenção para a simplicidade visual, atendendo a utilizadores de baixa literacia digital (em particular utilizadores móveis), e conta com um painel administrativo seguro para triagem das infrações.
+Plataforma web 100% anónima para monitorar, reportar e combater cibercrimes, fraudes eletrónicas e burlas de pagamentos móveis em Moçambique.
 
----
-
-##  Requisitos de Sistema
-
-- **Servidor Web:** Apache 2.4+ (XAMPP compatível)
-- **Interpretador:** PHP 8.0 ou superior (com extensão `PDO_MySQL` e `finfo` ativadas)
-- **Base de Dados:** MySQL 5.7+ ou MariaDB 10.4+
-- **Segurança:** Suporte HTTPS recomendado (sessões configuradas com cookies seguros automaticamente)
+**Site em produção:** https://sdb-mz.onrender.com  
+ **Repositório:** https://github.com/ShaquilElg/sdb-mz
 
 ---
 
-##  Estrutura do Código
+## Sobre o Projecto
 
-```text
-/ SDB-MZ Root
-│
-├── index.php                 # Página Inicial (Landing Page com Alertas e Estatísticas)
-├── denunciar.php             # Formulário Anónimo de Criação de Denúncias
-├── acompanhar.php           # Consulta pública do Estado do Caso (via código de Rastreio)
-├── confirmacao.php           # Exibição clara do Código de Rastreio Único pós-registro
-│
-├── includes/
-│   ├── config.php            # Estabelecimento de conexão PDO e cabeçalhos de segurança
-│   └── functions.php         # Sanitizador XSS, gerador de códigos de rastreio e validações
-│
-├── admin/
-│   ├── login.php             # Autenticação segura com criptografia Bcrypt
-│   ├── index.php             # Dashboard administrativo completo (tabelas, filtros e exportações)
-│   ├── denuncia.php          # Visualização de detalhes de cada denúncia individual e anexos
-│   ├── alertas.php           # Painel de publicação/controle de Alertas em tempo real
-│   └── logout.php            # Destruição segura de sessões administrativas
-│
-├── assets/
-│   ├── css/style.css         # Identidade visual (Verde e Amarelo de Moçambique) e responsividade
-│   └── js/main.js            # Validação dinâmica de uploads, copy-to-clipboard e utilitários
-│
-├── uploads/                  # Pasta para gravação física das capturas/screenshots enviados
-│
-└── setup.sql                 # Script de criação de tabelas e sementeiras iniciais
+O SDB-MZ permite que qualquer cidadão moçambicano denuncie burlas digitais de forma totalmente anónima — sem login, sem e-mail, sem identificação. O sistema foi desenhado com foco em utilizadores de baixa literacia digital, com interface simples, linguagem clara e compatibilidade com dispositivos móveis.
+
+---
+
+## Stack Tecnológica
+
+| Camada | Tecnologia |
+|--------|-----------|
+| Frontend | React + TypeScript |
+| Build | Vite |
+| Backend | Node.js + Express |
+| Base de Dados | PostgreSQL via Supabase |
+| Hospedagem | Render.com (Free Tier) |
+| Estilos | Tailwind CSS |
+| Ícones | Lucide React |
+
+---
+
+## Funcionalidades
+
+- **Denúncia anónima em 4 passos** com stepper e barra de progresso
+- **Código único de rastreio** gerado automaticamente (ex: `SDB-2026-XXXXX`)
+- **Biblioteca de Burlas** — guia educativo com 6 tipos de fraudes comuns em Moçambique
+- **Lista Negra de Números** — números suspeitos reportados pela comunidade
+- **Alerta automático** quando um número atinge 3 ou mais denúncias
+- **Verificação pública de números** suspeitos
+- **Estatísticas e Transparência** — dados públicos em tempo real
+- **Upload de evidências** — capturas de ecrã e PDFs (até 5MB)
+- **Contactos de emergência reais** na página de confirmação (Vodacom, PRM, Polícia)
+- **Checklist de segurança** obrigatória antes de submeter
+- **Design dark mode** responsivo, optimizado para mobile
+
+---
+
+## Estrutura do Código
+
+```
+sdb-mz/
+├── src/
+│   ├── App.tsx          # Aplicação React principal (todas as vistas)
+│   ├── main.tsx         # Ponto de entrada React
+│   └── index.css        # Estilos globais + Tailwind
+├── server.ts            # Backend Node.js + Express + PostgreSQL
+├── index.html           # HTML base
+├── vite.config.ts       # Configuração Vite
+├── package.json         # Dependências
+└── setup.sql            # Script SQL de criação das tabelas
 ```
 
 ---
 
-##  Instalação Local (XAMPP)
+## Base de Dados (Supabase / PostgreSQL)
 
-1. **Baixar / Copiar Código:**
-   Transfira a pasta Completa deste projeto para dentro do diretório `htdocs` do seu XAMPP (`C:\xampp\htdocs\sdb-mz\`).
+### Tabelas criadas
 
-2. **Iniciar Servidores:**
-   Abra o painel de controlo do XAMPP e ative os módulos **Apache** e **MySQL**.
-
-3. **Restaurar Base de Dados:**
-   - Abra o navegador e vá para [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/).
-   - Clique em **Novo** no menu esquerdo e crie uma base de dados chamada `sdb_mz`.
-   - Selecione a nova base de dados, clique na aba **Importar**, escolha o arquivo `/setup.sql` deste projeto e clique em **Importar** (ou Executar).
-
-4. **Configuração de Parâmetros:**
-   Abra o arquivo `/includes/config.php` e certifique-se de que os dados de conexão local correspondem:
-   ```php
-   define('DB_HOST', 'localhost');
-   define('DB_NAME', 'sdb_mz');
-   define('DB_USER', 'root');
-   define('DB_PASS', ''); // Deixe em branco se for no XAMPP padrão
-   ```
-
-5. **Testar no Browser:**
-   Aceda a [http://localhost/sdb-mz/](http://localhost/sdb-mz/) para iniciar.
+| Tabela | Descrição |
+|--------|-----------|
+| `denuncias` | Registo de todas as denúncias submetidas |
+| `alertas` | Alertas públicos de fraudes activas |
+| `evidencias` | Ficheiros de prova associados às denúncias |
+| `numeros_lista_negra` | Números suspeitos e total de ocorrências |
 
 ---
 
-##  Deploy em Alojamentos Gratuitos (InfinityFree / 000Webhos)
+## Segurança Implementada
 
-### 1. Preparar a Base de Dados no Cloud Host:
-1. Faça login na sua área de clientes InfinityFree/000webhost.
-2. Procure por **MySQL Databases** no painel de controlo.
-3. Crie uma nova base de dados.
-4. Clique em **phpMyAdmin** ao lado do banco de dados criado.
-5. Selecione a base de dados criada e use a ferramenta de **Importar** para carregar o ficheiro `setup.sql`.
+- **Anonimato total por defeito** — sem login, sem cookies de identificação
+- **Toggle de anonimato** — o utilizador escolhe se quer ser contactado
+- **Prepared Statements** — proteção contra SQL Injection
+- **Validação de ficheiros** — tipo MIME, tamanho máximo 5MB
+- **Alerta automático por reincidência** — quando um número acumula 3+ denúncias
+- **Sem exposição de dados pessoais** na consulta pública
 
-### 2. Configurar Conexão Base de Dados:
-Abra o arquivo `/includes/config.php` e altere os valores para corresponder às informações fornecidas pela sua hospedagem gratuita:
-```php
-define('DB_HOST', 'sql300.epizy.com'); // Exemplo fornecido pelo InfinityFree
-define('DB_NAME', 'epiz_32442_sdb_mz'); // Nome real do banco do host
-define('DB_USER', 'epiz_32442');       // Usuário real de banco do host
-define('DB_PASS', 'SuaSenhaForte');    // Senha secreta criada no painel de hospedagem
+---
+
+## Instalação Local
+
+```bash
+# Clonar o repositório
+git clone https://github.com/ShaquilElg/sdb-mz.git
+cd sdb-mz
+
+# Instalar dependências
+npm install
+
+# Configurar variáveis de ambiente
+cp .env.example .env
+# Editar .env com as credenciais do Supabase
+
+# Iniciar em desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
+npm run start
 ```
 
-### 3. Enviar Arquivos via FTP:
-1. Descarregue o cliente FileZilla ou use o Gerenciador de Arquivos Online do site.
-2. Conecte-se usando as credenciais FTP fornecidas pelo seu host.
-3. Transfira **todos os arquivos do projeto** para dentro da pasta `htdocs` (ou `public_html`).
-4. **Permissões de Escrita (Chmod):** Certifique-se de que a subpasta `/uploads/` tem permissões de gravação de arquivos (no FileZilla, clique com botão direito na pasta e configure permissões de gravação para `755` ou `777`).
+---
+
+## Variáveis de Ambiente
+
+```env
+SUPABASE_PG_HOST=aws-0-eu-west-1.pooler.supabase.com
+SUPABASE_PG_PORT=5432
+SUPABASE_PG_DATABASE=postgres
+SUPABASE_PG_USER=postgres.XXXXXXXX
+SUPABASE_PG_PASSWORD=SUA_PASSWORD
+```
 
 ---
 
-##  Acesso Administrativo (Demo)
+## Tipos de Burlas Cobertos
 
-Para efetuar testes no painel de controlo administrativo, aceda a:
-- **URL do Painel:** `http://seu-site/admin/`
-- **E-mail de Teste:** `admin@sdb.co.mz`
-- **Palavra-passe:** `admin123`
-
-> **Nota Importante:** Para gerar um novo hash de senha Bcrypt em produção para novos administradores, utilize a função PHP nativa: `password_hash('NovaSenhaSecreta', PASSWORD_DEFAULT)` e substitua diretamente no campo `password_hash` da tabela `admins`.
+1. **M-Pesa / E-Mola / mKesh** — SMS falsos, códigos USSD, falsos prémios
+2. **Phishing** — websites clonados de bancos moçambicanos (BIM, BCI, Standard Bank)
+3. **Redes Sociais** — perfis duplicados no WhatsApp e Facebook
+4. **Falso Investimento** — pirâmides financeiras e criptomoedas falsas
+5. **Falso Emprego** — vagas falsas da EDM, CFM, Portos com taxas ilegais
+6. **Comércio Falso** — anúncios fantasma no OLX e Facebook Marketplace
 
 ---
 
-##  Implementações de Segurança
+## Projecto Académico
 
-1. **Prepared Statements (PDO):** Todas as inserções e pesquisas de dados (como acompanhar tracking codes ou autenticar logins) usam prepared parameters para mitigar 100% de ataques SQL Injection.
-2. **Sanitização Contínua:** Os campos textuais expostos no portal sofrem sanitização via `htmlspecialchars` em UTF8 antes da renderização no ecrã.
-3. **Uploads Blindados:** A plataforma verifica dinamicamente se o tamanho do anexo não ultrapassa 5MB, valida seu tipo real de cabeçalho MIME (permitindo somente formatos fotográficos seguros e PDFs) e renomeia o arquivo fisicamente usando caracteres aleatórios para inviabilizar a execução cruzada de arquivos maliciosos PHP `.php`.
-4. **Rate Limiting por IP:** O servidor recusa submeter novas queixas no mesmo minuto para o mesmo utilizador IP caso envie mais do que 3 queixas seguidas, protegendo o sistema de robôs automáticos de SPAM.
+Desenvolvido no âmbito do curso universitário como iniciativa cidadã digital para Moçambique.
+
+**Grupo 5**
