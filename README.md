@@ -6,7 +6,7 @@ Este projeto foi projetado com especial atenção para a simplicidade visual, at
 
 ---
 
-## 🚀 Requisitos de Sistema
+##  Requisitos de Sistema
 
 - **Servidor Web:** Apache 2.4+ (XAMPP compatível)
 - **Interpretador:** PHP 8.0 ou superior (com extensão `PDO_MySQL` e `finfo` ativadas)
@@ -15,7 +15,7 @@ Este projeto foi projetado com especial atenção para a simplicidade visual, at
 
 ---
 
-## 📦 Estrutura do Código
+##  Estrutura do Código
 
 ```text
 / SDB-MZ Root
@@ -47,7 +47,7 @@ Este projeto foi projetado com especial atenção para a simplicidade visual, at
 
 ---
 
-## 🛠️ Instalação Local (XAMPP)
+##  Instalação Local (XAMPP)
 
 1. **Baixar / Copiar Código:**
    Transfira a pasta Completa deste projeto para dentro do diretório `htdocs` do seu XAMPP (`C:\xampp\htdocs\sdb-mz\`).
@@ -74,7 +74,7 @@ Este projeto foi projetado com especial atenção para a simplicidade visual, at
 
 ---
 
-## 🌐 Deploy em Alojamentos Gratuitos (InfinityFree / 000Webhost)
+##  Deploy em Alojamentos Gratuitos (InfinityFree / 000Webhos)
 
 ### 1. Preparar a Base de Dados no Cloud Host:
 1. Faça login na sua área de clientes InfinityFree/000webhost.
@@ -100,18 +100,18 @@ define('DB_PASS', 'SuaSenhaForte');    // Senha secreta criada no painel de hosp
 
 ---
 
-## 🔒 Acesso Administrativo (Demo)
+##  Acesso Administrativo (Demo)
 
 Para efetuar testes no painel de controlo administrativo, aceda a:
 - **URL do Painel:** `http://seu-site/admin/`
 - **E-mail de Teste:** `admin@sdb.co.mz`
 - **Palavra-passe:** `admin123`
 
-> ⚠️ **Nota Importante:** Para gerar um novo hash de senha Bcrypt em produção para novos administradores, utilize a função PHP nativa: `password_hash('NovaSenhaSecreta', PASSWORD_DEFAULT)` e substitua diretamente no campo `password_hash` da tabela `admins`.
+> **Nota Importante:** Para gerar um novo hash de senha Bcrypt em produção para novos administradores, utilize a função PHP nativa: `password_hash('NovaSenhaSecreta', PASSWORD_DEFAULT)` e substitua diretamente no campo `password_hash` da tabela `admins`.
 
 ---
 
-## 🔐 Implementações de Segurança
+##  Implementações de Segurança
 
 1. **Prepared Statements (PDO):** Todas as inserções e pesquisas de dados (como acompanhar tracking codes ou autenticar logins) usam prepared parameters para mitigar 100% de ataques SQL Injection.
 2. **Sanitização Contínua:** Os campos textuais expostos no portal sofrem sanitização via `htmlspecialchars` em UTF8 antes da renderização no ecrã.
