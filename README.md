@@ -1,21 +1,21 @@
 # SDB-MZ — Sistema de Denúncia de Burlas de Moçambique
 
-"Denuncie. Proteja. Moçambique."**
+Denuncie. Proteja. Moçambique.
 
 Plataforma web 100% anónima para monitorar, reportar e combater cibercrimes, fraudes eletrónicas e burlas de pagamentos móveis em Moçambique.
 
-**Site em produção:** https://sdb-mz.onrender.com  
+**Site em produção: https://sdb-mz.onrender.com  
  **Repositório:** https://github.com/ShaquilElg/sdb-mz
 
----
+
 
 ## Sobre o Projecto
 
 O SDB-MZ permite que qualquer cidadão moçambicano denuncie burlas digitais de forma totalmente anónima — sem login, sem e-mail, sem identificação. O sistema foi desenhado com foco em utilizadores de baixa literacia digital, com interface simples, linguagem clara e compatibilidade com dispositivos móveis.
 
----
 
-## Stack Tecnológica
+
+ Stack Tecnológica
 
 | Camada | Tecnologia |
 |--------|-----------|
@@ -27,9 +27,9 @@ O SDB-MZ permite que qualquer cidadão moçambicano denuncie burlas digitais de 
 | Estilos | Tailwind CSS |
 | Ícones | Lucide React |
 
----
 
-## Funcionalidades
+
+ Funcionalidades
 
 - **Denúncia anónima em 4 passos** com stepper e barra de progresso
 - **Código único de rastreio** gerado automaticamente (ex: `SDB-2026-XXXXX`)
@@ -43,9 +43,9 @@ O SDB-MZ permite que qualquer cidadão moçambicano denuncie burlas digitais de 
 - **Checklist de segurança** obrigatória antes de submeter
 - **Design dark mode** responsivo, optimizado para mobile
 
----
 
-## Estrutura do Código
+
+ Estrutura do Código
 
 ```
 sdb-mz/
@@ -62,9 +62,9 @@ sdb-mz/
 
 ---
 
-## Base de Dados (Supabase / PostgreSQL)
+ Base de Dados (Supabase / PostgreSQL)
 
-### Tabelas criadas
+ Tabelas criadas
 
 | Tabela | Descrição |
 |--------|-----------|
@@ -73,20 +73,20 @@ sdb-mz/
 | `evidencias` | Ficheiros de prova associados às denúncias |
 | `numeros_lista_negra` | Números suspeitos e total de ocorrências |
 
----
 
-## Segurança Implementada
 
-- **Anonimato total por defeito** — sem login, sem cookies de identificação
-- **Toggle de anonimato** — o utilizador escolhe se quer ser contactado
-- **Prepared Statements** — proteção contra SQL Injection
-- **Validação de ficheiros** — tipo MIME, tamanho máximo 5MB
-- **Alerta automático por reincidência** — quando um número acumula 3+ denúncias
-- **Sem exposição de dados pessoais** na consulta pública
+Segurança Implementada
 
----
+- Anonimato total por defeito** — sem login, sem cookies de identificação
+- Toggle de anonimato** — o utilizador escolhe se quer ser contactado
+- Prepared Statements** — proteção contra SQL Injection
+- Validação de ficheiros** — tipo MIME, tamanho máximo 5MB
+- Alerta automático por reincidência** — quando um número acumula 3+ denúncias
+- Sem exposição de dados pessoais** na consulta pública
 
-## Instalação Local
+
+
+ Instalação Local
 
 ```bash
 # Clonar o repositório
@@ -108,9 +108,9 @@ npm run build
 npm run start
 ```
 
----
 
-## Variáveis de Ambiente
+
+ Variáveis de Ambiente
 
 ```env
 SUPABASE_PG_HOST=aws-0-eu-west-1.pooler.supabase.com
@@ -122,19 +122,19 @@ SUPABASE_PG_PASSWORD=SUA_PASSWORD
 
 ---
 
-## Tipos de Burlas Cobertos
+Tipos de Burlas Cobertos
 
-1. **M-Pesa / E-Mola / mKesh** — SMS falsos, códigos USSD, falsos prémios
-2. **Phishing** — websites clonados de bancos moçambicanos (BIM, BCI, Standard Bank)
-3. **Redes Sociais** — perfis duplicados no WhatsApp e Facebook
-4. **Falso Investimento** — pirâmides financeiras e criptomoedas falsas
-5. **Falso Emprego** — vagas falsas da EDM, CFM, Portos com taxas ilegais
-6. **Comércio Falso** — anúncios fantasma no OLX e Facebook Marketplace
+1. M-Pesa / E-Mola / mKesh** — SMS falsos, códigos USSD, falsos prémios
+2. Phishing** — websites clonados de bancos moçambicanos (BIM, BCI, Standard Bank)
+3. Redes Sociais** — perfis duplicados no WhatsApp e Facebook
+4. Falso Investimento** — pirâmides financeiras e criptomoedas falsas
+5. Falso Emprego** — vagas falsas da EDM, CFM, Portos com taxas ilegais
+6. Comércio Falso** — anúncios fantasma no OLX e Facebook Marketplace
 
 ---
 
-## Projecto Académico
+Projecto Académico
 
 Desenvolvido no âmbito do curso universitário como iniciativa cidadã digital para Moçambique.
 
-**Grupo 5**
+Grupo 5
