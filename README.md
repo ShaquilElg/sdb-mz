@@ -1,6 +1,6 @@
 # SDB-MZ — Sistema de Denúncia de Burlas de Moçambique
 
-> **"Denuncie. Proteja. Moçambique."**
+"Denuncie. Proteja. Moçambique."**
 
 Plataforma web 100% anónima para monitorar, reportar e combater cibercrimes, fraudes eletrónicas e burlas de pagamentos móveis em Moçambique.
 
