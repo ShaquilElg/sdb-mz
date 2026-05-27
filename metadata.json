@@ -1,0 +1,6 @@
+{
+  "name": "SDB-MZ",
+  "description": "Sistema de Denúncia de Burlas de Moçambique. Plataforma de denúncia anónima de fraudes digitais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
