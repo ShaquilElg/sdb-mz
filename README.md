@@ -5,7 +5,7 @@ Denuncie. Proteja. Moçambique.
 Plataforma web 100% anónima para monitorar, reportar e combater cibercrimes, fraudes eletrónicas e burlas de pagamentos móveis em Moçambique.
 
 Site em produção: https://sdb-mz.onrender.com  
- Repositório:** https://github.com/ShaquilElg/sdb-mz
+ Repositório: https://github.com/ShaquilElg/sdb-mz
 
 
 
